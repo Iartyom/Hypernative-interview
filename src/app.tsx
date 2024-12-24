@@ -14,24 +14,34 @@ function App () {
   const [genres, setGenres] = useState<Map<number, string>>()
   const [releaseYearsOptions, setReleaseYearsOptions] = useState<selectOption[]>([]);
   const [genreOptions, setGenreOptions] = useState<selectOption[]>([]);
+  const [error, setError] = useState<string | null>(null);
 
   const [searchVideoValue, setSearchVideoValue] = useState("");
   const [selectedYear, setSelectedYear] = useState<selectOption[]>([]);
   const [selectedGenres, setSelectedGenres] = useState<selectOption[]>([]);
 
   useEffect(() => {
+
     const fetchMovies = async () => {
-      const parsedData: IMovieData = await fetchAllData()
+      try {
+        const parsedData: IMovieData = await fetchAllData()
 
-      setVideos(parsedData.movies)
-      setGenres(parsedData.genres)
+        setVideos(parsedData.movies)
+        setGenres(parsedData.genres)
 
-      setGenreOptions(createGenreOptionsArr(parsedData.genres));
-      setReleaseYearsOptions(createYearOptionsArr(parsedData.movies))
+        setGenreOptions(createGenreOptionsArr(parsedData.genres));
+        setReleaseYearsOptions(createYearOptionsArr(parsedData.movies))
+      }
+      catch (err) {
+        setError("Failed to load data. Please try again later." + err);
+      }
     }
     fetchMovies()
   }, [])
 
+  if (error) {
+    return <div className="error">{error}</div>;
+  }
 
   return (
     <div className='app-wrapper'>

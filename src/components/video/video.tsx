@@ -3,7 +3,7 @@ import './video.css'
 import { IVideo } from '../../utils/interfaces'
 
 
-const Video: React.FC<{ video: IVideo  }> = ({ video }) => {
+const Video: React.FC<{ video: IVideo }> = ({ video }) => {
 
   return <div className="video-card">
     <img src={video.image_url} alt={`${video.title} thumbnail`} className="video-card-image" />

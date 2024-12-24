@@ -13,7 +13,11 @@ export const fetchAllData = async () => {
 
     // parse movies
     response?.data?.videos.forEach((video: IVideo) => {
-      if (!video?.image_url || !video?.title || !video?.id) return;
+      if (!video?.image_url || !video?.title || !video?.id) {
+        console.warn("Skipping invalid video entry:", video);
+        return;
+      }
+
       const newVideo: IVideo = {
         id: video?.id,
         image_url: video?.image_url,
@@ -28,7 +32,10 @@ export const fetchAllData = async () => {
 
     // parse genres
     response?.data?.genres.forEach((genre: IGenres) => {
-      if (!genre?.id || !genre?.name) return;
+      if (!genre?.id || !genre?.name) {
+        console.warn("Skipping genre , missing fields:", genre);
+        return;
+      }
 
       parsedDate.genres.set(genre.id, genre.name);
     });
