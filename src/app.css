@@ -1,0 +1,5 @@
+.app-wrapper {
+  max-width: 900px;
+  height: 100vh; /* Ensure the wrapper takes the full height of the viewport */
+  margin: 0 auto; /* Center horizontally */
+}

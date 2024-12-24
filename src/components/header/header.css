@@ -1,0 +1,27 @@
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+
+}
+.filters 
+{
+  width  :100%;
+  gap: 10px; /* Add space between the filters */
+  display: flex;
+  justify-content:center;
+}
+
+.filters input,
+.filters .react-dropdown-select {
+  width: 250px; /* Set a constant width */
+}
+
+.filters input {
+  flex: 1;
+  width  :100%;
+  max-width: 250px; /* Set a maximum width */
+}
+

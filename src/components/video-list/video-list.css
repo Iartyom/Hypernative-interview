@@ -1,0 +1,17 @@
+.video-list-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 900px;
+}
+
+.video-item {
+  margin: 7px;
+  max-width: calc(100% - 14px); /* Ensure margin is considered */
+}
+
+@media (min-width: 900px) {
+  .video-item {
+    max-width: calc(33.333% - 14px); /* 3 videos per row */
+  }
+}
